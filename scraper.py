@@ -5,7 +5,8 @@ from sqlalchemy import Column, Integer, String, DateTime, Float, Boolean
 from sqlalchemy.orm import sessionmaker
 from dateutil.parser import parse
 from util import post_listing_to_slack, find_points_of_interest
-from slackclient import SlackClient
+#from slackclient import SlackClient
+import slack
 import time
 import settings
 
@@ -115,7 +116,7 @@ def do_scrape():
     """
 
     # Create a slack client.
-    sc = SlackClient(settings.SLACK_TOKEN)
+    sc = slack.WebClient(settings.SLACK_TOKEN)
 
     # Get all the results from craigslist.
     all_results = []
